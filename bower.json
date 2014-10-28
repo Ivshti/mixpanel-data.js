@@ -1,0 +1,27 @@
+{
+  "name": "mixpanel-data.js",
+  "main": "mixpanel-data.browser.min.js",
+  "version": "0.1.0",
+  "homepage": "https://github.com/jamespamplin/mixpanel-data.js",
+  "authors": [
+    "james@jamespamplin.com <james@jamespamplin.com>"
+  ],
+  "description": "Javascript Client (browser and node) for retrieving data from Mixpanel",
+  "moduleType": [
+    "amd",
+    "globals",
+    "node"
+  ],
+  "keywords": [
+    "mixpanel"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "makefile",
+    "test",
+    "tests"
+  ]
+}

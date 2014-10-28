@@ -11,5 +11,9 @@
   "dependencies": {
     "md5": "^1.0.0",
     "superagent": "^0.20.0"
+  },
+  "devDependencies": {
+    "browserify": "^6.2.0",
+    "exorcist": "^0.1.6"
   }
 }

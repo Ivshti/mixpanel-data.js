@@ -37,7 +37,9 @@ function client(apiKey, apiSecret) {
 
       query.sig = getSig(query, apiSecret);
 
-      request.get(apiEndpoint + path).query(query).end(callback);
+      request.get(apiEndpoint + path).query(query).end(function(err, resp) {
+        callback(err, resp && resp.body, resp);
+      });
 
       return out;
     }

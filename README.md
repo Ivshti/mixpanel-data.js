@@ -53,3 +53,10 @@ Available as `mxData` in the global namespace.
 </body>
 </html>
 ```
+
+
+## Release
+
+Tag and update version: `npm version patch`
+
+Push: `git push && git push --tags`

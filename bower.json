@@ -1,7 +1,7 @@
 {
   "name": "mixpanel-data.js",
   "main": "mixpanel-data.browser.min.js",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "homepage": "https://github.com/jamespamplin/mixpanel-data.js",
   "authors": [
     "james@jamespamplin.com <james@jamespamplin.com>"

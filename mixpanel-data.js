@@ -5,6 +5,7 @@ var md5 = require('md5');
 function client(apiKey, apiSecret) {
 
   var apiEndpoint = 'http://mixpanel.com/api/2.0/';
+  var apiDataEndpoint = 'http://data.mixpanel.com/api/2.0/';
 
   var expiry = 60;
 
@@ -33,7 +34,6 @@ function client(apiKey, apiSecret) {
 
       query.api_key = apiKey;
       query.expire = getExpiryTime(expiry);
-
       query.sig = getSig(query, apiSecret);
 
       Object.keys(query).forEach(function(key) { query[key] = stringifyArgForSig(query[key]) });
@@ -42,6 +42,22 @@ function client(apiKey, apiSecret) {
       });
 
       return out;
+    },
+
+    export: function(query, callback) {
+      query = query || {};
+
+      query.api_key = apiKey;
+      query.expire = getExpiryTime(expiry);
+      query.sig = getSig(query, apiSecret);
+
+      Object.keys(query).forEach(function(key) { query[key] = stringifyArgForSig(query[key]) });
+      request.get(apiDataEndpoint + "/export").query(query).end(function(err, resp) {
+        console.log(err,resp)
+        callback(err, resp && resp.body, resp);
+      });
+
+      return out; 
     }
   };
 

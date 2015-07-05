@@ -36,6 +36,7 @@ function client(apiKey, apiSecret) {
 
       query.sig = getSig(query, apiSecret);
 
+      Object.keys(query).forEach(function(key) { query[key] = stringifyArgForSig(query[key]) });
       request.get(apiEndpoint + path).query(query).end(function(err, resp) {
         callback(err, resp && resp.body, resp);
       });
@@ -57,9 +58,12 @@ function getSig(query, apiSecret) {
 }
 
 function concatArgsForSig(query) {
-  return Object.keys(query).sort().map(function(key) { return key + '=' + query[key]; }).join('');
+  return Object.keys(query).sort().map(function(key) { return key + '=' + stringifyArgForSig(query[key]); }).join('');
 }
 
+function stringifyArgForSig(arg) {
+  return typeof(arg)=="string" ? arg : JSON.stringify(arg);
+}
 
 module.exports = {
   client: client,

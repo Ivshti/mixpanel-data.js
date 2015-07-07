@@ -43,7 +43,8 @@ function client(apiKey, apiSecret) {
 
       return out;
     },
-
+    
+    // Consider an abstraction to expression format - https://mixpanel.com/docs/api-documentation/data-export-api#segmentation-expressions 
     export: function(query, callback) {
       query = query || {};
 

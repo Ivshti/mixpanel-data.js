@@ -54,7 +54,10 @@ function client(apiKey, apiSecret) {
 
       Object.keys(query).forEach(function(key) { query[key] = stringifyArgForSig(query[key]) });
       request.get(apiDataEndpoint + "/export").query(query).end(function(err, resp) {
-        var data = resp && resp.text && resp.text.split("\n").filter(function(x) { return x }).map(function(x) { return JSON.parse(x) });
+        var data;
+        try { 
+          data = resp && resp.text && resp.text.split("\n").filter(function(x) { return x }).map(function(x) { return JSON.parse(x) }); 
+        } catch(e) { return callback(e); }
         if (data && data[0] && data[0].error) { err = data[0]; data = null ; }
         callback(err, data );
       });
